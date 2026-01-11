@@ -2,6 +2,14 @@
 
 A simple Python utility to convert camelCase strings to snake_case.
 
+## Installation
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+# No external dependencies required
+```
+
 ## Usage
 
 ```python
