@@ -60,3 +60,27 @@ source .venv/bin/activate
 pip install -e ".[dev]"   # editable install with test deps
 pytest -v                 # run the test suite
 ```
+
+## Releasing to PyPI
+
+Publishing is automated via `.github/workflows/publish.yml` using
+[PyPI Trusted Publishing](https://docs.pypi.org/trusted-publishers/) (OIDC) — no
+API tokens are stored.
+
+**One-time setup** (on PyPI, once you have an account):
+
+1. On PyPI → *Your projects* → *Publishing*, add a trusted publisher:
+   - Owner: `sbj-ee`  ·  Repository: `camel2snake`  ·  Workflow: `publish.yml`  ·  Environment: `pypi`
+   - (Optionally do the same on [TestPyPI](https://test.pypi.org/) with environment `testpypi`.)
+2. In this repo → *Settings → Environments*, create environments named `pypi`
+   (and `testpypi`), optionally adding yourself as a required reviewer.
+
+**To release:**
+
+1. Bump `version` in `pyproject.toml` and `__version__` in
+   `src/camel2snake/__init__.py`.
+2. Create a GitHub Release (tag e.g. `v0.1.0`). The workflow builds, runs
+   `twine check`, and publishes to PyPI automatically.
+
+**Dry run:** trigger the workflow manually (*Actions → Publish to PyPI → Run
+workflow*) with target `testpypi` to publish to TestPyPI first.
