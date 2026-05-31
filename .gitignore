@@ -14,3 +14,9 @@ venv/
 .idea/
 .vscode/
 *.swp
+
+# build artifacts
+/dist/
+*.egg-info/
+build/
+uv.lock

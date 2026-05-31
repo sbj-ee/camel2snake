@@ -1,6 +1,5 @@
 """Tests for camel_to_snake function."""
 
-import pytest
 from camel2snake import camel_to_snake
 
 

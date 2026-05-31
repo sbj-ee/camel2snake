@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "camel2snake"
+version = "0.1.0"
+description = "Convert camelCase strings to snake_case (library + CLI)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "Stephen B. Johnson", email = "stevebj.ee@gmail.com" }]
+keywords = ["camelcase", "snake_case", "string", "convert", "cli"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/sbj-ee/camel2snake"
+Repository = "https://github.com/sbj-ee/camel2snake"
+Issues = "https://github.com/sbj-ee/camel2snake/issues"
+
+[project.scripts]
+camel2snake = "camel2snake.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/camel2snake"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
